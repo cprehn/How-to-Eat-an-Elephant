@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Eat an Elephant - The 1st Law: Make it Obvious</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            display: none;
+            width: 95%;
+            max-width: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 4.5em;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 3.2em;
+            margin-bottom: 30px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 2.4em;
+            margin-bottom: 20px;
+            color: #f0f0f0;
+            font-weight: 500;
+        }
+
+        p, li {
+            font-size: 1.8em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #f5f5f5;
+        }
+
+        .subtitle {
+            font-size: 2.1em;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        ul {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 2.1em;
+            color: #ffd700;
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 4px solid #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            text-align: left;
+            align-items: center;
+        }
+
+        .big-number {
+            font-size: 10em;
+            font-weight: bold;
+            color: #ffd700;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .elephant-emoji {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .law-number {
+            font-size: 8em;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .habit-loop {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .habit-step {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid #ffd700;
+            border-radius: 20px;
+            padding: 20px;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .habit-step h4 {
+            color: #ffd700;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .habit-step p {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .arrow {
+            font-size: 2em;
+            color: #ffd700;
+        }
+
+        .example-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .bad-example {
+            border-color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .good-example {
+            border-color: #51cf66;
+            background: rgba(81, 207, 102, 0.1);
+        }
+
+        .example-label {
+            font-weight: bold;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .bad-label {
+            color: #ff6b6b;
+        }
+
+        .good-label {
+            color: #51cf66;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .strategy-card {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .strategy-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Habit Scorecard Styles */
+        .scorecard-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .habit-list {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .rating-system {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .habit-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.4em;
+        }
+
+        .habit-item:last-child {
+            border-bottom: none;
+        }
+
+        .rating-positive {
+            color: #51cf66;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .rating-negative {
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .rating-neutral {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .rating-legend {
+            margin-bottom: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        .legend-symbol {
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-right: 15px;
+            width: 25px;
+        }
+
+        .scorecard-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ffd700;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 3.2em;
+            }
+            
+            h2 {
+                font-size: 2.6em;
+            }
+            
+            h3 {
+                font-size: 1.9em;
+            }
+            
+            p, li {
+                font-size: 1.5em;
+            }
+            
+            .subtitle {
+                font-size: 1.7em;
+            }
+            
+            .quote {
+                font-size: 1.7em;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .law-number {
+                font-size: 5.5em;
+            }
+
+            .habit-loop {
+                flex-direction: column;
+            }
+
+            .strategy-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .scorecard-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .habit-item {
+                font-size: 1.2em;
+            }
+
+            .legend-item {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <span class="elephant-emoji">🐘</span>
+            <h1>How to Eat an Elephant</h1>
+            <h2>The 1st Law: Make it Obvious</h2>
+            <p class="subtitle">Seeing Your Next Bite Clearly</p>
+            <p class="subtitle">Session 2 of 5</p>
+        </div>
+
+        <!-- Slide 2: Quick Recap -->
+        <div class="slide">
+            <h2>Quick Bite-Sized Recap</h2>
+            <ul>
+                <li>Your brain conserves energy (80% body budgeting, 20% consciousness)</li>
+                <li>Small 1% improvements compound to 37x better results</li>
+                <li>Focus on systems, not just goals</li>
+                <li>Start with identity: "Who am I becoming?"</li>
+                <li>Every action is a vote for your future self</li>
+            </ul>
+            <div class="quote">
+                "We are the habits we keep. We become what we repeatedly do."
+            </div>
+        </div>
+
+        <!-- Slide 3: The Four Laws -->
+        <div class="slide">
+            <h2>The Four Laws of Behavior Change</h2>
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <span class="strategy-icon">👀</span>
+                    <h3>1st Law</h3>
+                    <p><strong>Make it Obvious</strong></p>
+                    <p>(Today's Focus)</p>
+                </div>
+                <div class="strategy-card" style="opacity: 0.5;">
+                    <span class="strategy-icon">❤️</span>
+                    <h3>2nd Law</h3>
+                    <p><strong>Make it Attractive</strong></p>
+                    <p>(Next Session)</p>
+                </div>
+                <div class="strategy-card" style="opacity: 0.5;">
+                    <span class="strategy-icon">⚡</span>
+                    <h3>3rd Law</h3>
+                    <p><strong>Make it Easy</strong></p>
+                    <p>(Session 4)</p>
+                </div>
+                <div class="strategy-card" style="opacity: 0.5;">
+                    <span class="strategy-icon">🎉</span>
+                    <h3>4th Law</h3>
+                    <p><strong>Make it Satisfying</strong></p>
+                    <p>(Session 5)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: The Habit Loop -->
+        <div class="slide">
+            <h2>The Habit Loop</h2>
+            <p>Every habit follows this simple pattern:</p>
+            <div class="habit-loop">
+                <div class="habit-step">
+                    <h4>1. Cue</h4>
+                    <p>The trigger</p>
+                </div>
+                <span class="arrow">→</span>
+                <div class="habit-step">
+                    <h4>2. Craving</h4>
+                    <p>The motivation</p>
+                </div>
+                <span class="arrow">→</span>
+                <div class="habit-step">
+                    <h4>3. Response</h4>
+                    <p>The habit</p>
+                </div>
+                <span class="arrow">→</span>
+                <div class="habit-step">
+                    <h4>4. Reward</h4>
+                    <p>The benefit</p>
+                </div>
+            </div>
+            <p>The <span class="highlight">1st Law addresses the CUE</span> - making your desired elephant bite obvious and unavoidable.</p>
+        </div>
+
+        <!-- Slide 5: Law #1 Introduction -->
+        <div class="slide">
+            <div class="law-number">1</div>
+            <h1>Make it Obvious</h1>
+            <p class="subtitle">You can't eat an elephant you can't see</p>
+            <ul>
+                <li>Many habits are invisible to us</li>
+                <li>We operate on autopilot 80% of the time</li>
+                <li>Awareness is the first step to change</li>
+                <li>Clear cues create consistent actions</li>
+            </ul>
+        </div>
+
+        <!-- Slide 6: The Problem - Invisible Habits -->
+        <div class="slide">
+            <h2>The Problem: Invisible Habits</h2>
+            <div class="example-box bad-example">
+                <p class="example-label bad-label">❌ Common Invisible Patterns:</p>
+                <ul>
+                    <li>Checking phone every few minutes</li>
+                    <li>Mindless snacking while watching TV</li>
+                    <li>Putting off exercise "until tomorrow"</li>
+                    <li>Scrolling social media instead of reading</li>
+                </ul>
+            </div>
+            <div class="quote">
+                "Until you make the unconscious conscious, it will direct your life and you will call it fate." - Carl Jung
+            </div>
+        </div>
+
+        <!-- Slide 7: The Habit Scorecard -->
+        <div class="slide">
+            <h2>The Habit Scorecard</h2>
+            <p class="subtitle">Step 1: Become aware of your current habits</p>
+            
+            <div class="scorecard-container">
+                <div class="habit-list">
+                    <h3 class="scorecard-title">Daily Habits Example</h3>
+                    <div class="habit-item">
+                        <span>Wake up</span>
+                        <span class="rating-neutral">=</span>
+                    </div>
+                    <div class="habit-item">
+                        <span>Check phone immediately</span>
+                        <span class="rating-negative">-</span>
+                    </div>
+                    <div class="habit-item">
+                        <span>Brush teeth</span>
+                        <span class="rating-positive">+</span>
+                    </div>
+                    <div class="habit-item">
+                        <span>Make coffee</span>
+                        <span class="rating-neutral">=</span>
+                    </div>
+                    <div class="habit-item">
+                        <span>Read news while drinking coffee</span>
+                        <span class="rating-positive">+</span>
+                    </div>
+                    <div class="habit-item">
+                        <span>Skip breakfast</span>
+                        <span class="rating-negative">-</span>
+                    </div>
+                    <div class="habit-item">
+                        <span>Drive to work</span>
+                        <span class="rating-neutral">=</span>
+                    </div>
+                    <div class="habit-item">
+                        <span>Buy expensive coffee</span>
+                        <span class="rating-negative">-</span>
+                    </div>
+                </div>
+                
+                <div class="rating-system">
+                    <h3 class="scorecard-title">Rating System</h3>
+                    <div class="rating-legend">
+                        <div class="legend-item">
+                            <span class="legend-symbol rating-positive">+</span>
+                            <span>Positive habit (helps you become who you want to be)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-symbol rating-negative">-</span>
+                            <span>Negative habit (hinders your progress)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-symbol rating-neutral">=</span>
+                            <span>Neutral habit (neither helpful nor harmful)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="example-box good-example">
+                        <p class="example-label good-label">✅ Your Turn:</p>
+                        <p style="font-size: 1.3em; margin: 0;">List every habit from when you wake up until noon. Rate each one with +, -, or =</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quote" style="margin-top: 30px;">
+                "The first step to changing bad habits is to be on the lookout for them."
+            </div>
+        </div>
+
+        <!-- Slide 8: Strategy 1 - Habit Stacking -->
+        <div class="slide">
+            <h2>Strategy 1: Habit Stacking</h2>
+            <p>Link your new elephant bite to an existing habit</p>
+            <div class="example-box good-example">
+                <p class="example-label good-label">✅ Formula: After [Current Habit], I will [New Habit]</p>
+                <ul>
+                    <li>After I pour my morning coffee, I will read for 2 minutes</li>
+                    <li>After I sit down at my desk, I will write one sentence</li>
+                    <li>After I put on my running shoes, I will text my accountability partner</li>
+                    <li>After I close my laptop, I will put my phone in another room</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 8: Strategy 2 - Environmental Design -->
+        <div class="slide">
+            <h2>Strategy 2: Environmental Design</h2>
+            <p>Make the cues of good habits obvious and bad habits invisible</p>
+            <div class="two-column">
+                <div class="example-box good-example">
+                    <p class="example-label good-label">✅ Good Habit Cues</p>
+                    <ul style="font-size: 1.4em;">
+                        <li>Put books on your pillow</li>
+                        <li>Lay out workout clothes</li>
+                        <li>Put healthy snacks at eye level</li>
+                        <li>Keep guitar in living room</li>
+                    </ul>
+                </div>
+                <div class="example-box bad-example">
+                    <p class="example-label bad-label">❌ Hide Bad Habit Cues</p>
+                    <ul style="font-size: 1.4em;">
+                        <li>Put junk food in pantry</li>
+                        <li>Charge phone in another room</li>
+                        <li>Uninstall social media apps</li>
+                        <li>Remove TV from bedroom</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Strategy 3 - Implementation Intentions -->
+        <div class="slide">
+            <h2>Strategy 3: Implementation Intentions</h2>
+            <p>Be specific about when and where you'll take your bite</p>
+            <div class="example-box bad-example">
+                <p class="example-label bad-label">❌ Vague Intention:</p>
+                <p>"I will exercise more this week"</p>
+            </div>
+            <div class="example-box good-example">
+                <p class="example-label good-label">✅ Implementation Intention:</p>
+                <p>"I will exercise for 20 minutes by doing bodyweight exercises in my living room at 7am on Monday, Wednesday, and Friday"</p>
+            </div>
+            <div class="quote">
+                "I will [BEHAVIOR] at [TIME] in [LOCATION]"
+            </div>
+        </div>
+
+        <!-- Slide 10: The Elephant Bite Example -->
+        <div class="slide">
+            <h2>Elephant Bite Example: Reading More</h2>
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <span class="strategy-icon">📚</span>
+                    <h4>Habit Stacking</h4>
+                    <p>"After I pour my morning coffee, I will read for 5 minutes"</p>
+                </div>
+                <div class="strategy-card">
+                    <span class="strategy-icon">🏠</span>
+                    <h4>Environment</h4>
+                    <p>"I will put a book on my coffee table and hide my phone charger"</p>
+                </div>
+                <div class="strategy-card">
+                    <span class="strategy-icon">⏰</span>
+                    <h4>Implementation</h4>
+                    <p>"I will read for 5 minutes at 7am in my kitchen chair"</p>
+                </div>
+                <div class="strategy-card">
+                    <span class="strategy-icon">🎯</span>
+                    <h4>Identity</h4>
+                    <p>"I am becoming a reader who starts each day with learning"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Your Turn - Action Steps -->
+        <div class="slide">
+            <h2>Your Turn: Make Your Elephant Obvious</h2>
+            <ul>
+                <li><span class="highlight">Identify your elephant:</span> What habit do you want to build?</li>
+                <li><span class="highlight">Choose your stack:</span> What existing habit will trigger it?</li>
+                <li><span class="highlight">Design your environment:</span> What cues will you make obvious?</li>
+                <li><span class="highlight">Get specific:</span> When and where exactly will you act?</li>
+                <li><span class="highlight">Start tiny:</span> What's the smallest first bite you can take?</li>
+            </ul>
+            <div class="quote">
+                "Every elephant is eaten one obvious, intentional bite at a time."
+            </div>
+        </div>
+
+        <!-- Slide 12: Next Session Preview -->
+        <div class="slide">
+            <h2>Next Session Preview</h2>
+            <h3>Session 3: The 2nd Law - Make it Attractive</h3>
+            <ul>
+                <li>How to make your elephant bites irresistible</li>
+                <li>The role of dopamine in habit formation</li>
+                <li>Temptation bundling strategies</li>
+                <li>Creating compelling reasons to act</li>
+            </ul>
+            <p class="subtitle">Making your habits so attractive, you'll crave the next bite!</p>
+        </div>
+
+        <!-- Slide 13: Thank You -->
+        <div class="slide">
+            <span class="elephant-emoji">🐘</span>
+            <h1>Thank You!</h1>
+            <div class="quote">
+                "The most powerful way to change your habits is to focus not on what you want to achieve, but on who you wish to become."
+            </div>
+            <p class="subtitle">Make your next elephant bite obvious!</p>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" onclick="changeSlide(-1)" id="prevBtn">Previous</button>
+        <button class="nav-btn" onclick="changeSlide(1)" id="nextBtn">Next</button>
+    </div>
+
+    <div class="slide-counter">
+        <span id="slideNumber">1</span> / <span id="totalSlides">14</span>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = document.querySelectorAll('.slide').length;
+        
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide - 1].classList.add('active');
+            
+            document.getElementById('slideNumber').textContent = currentSlide;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+        }
+
+        function changeSlide(n) {
+            currentSlide += n;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'Home') {
+                currentSlide = 1;
+                showSlide(currentSlide);
+            }
+            if (e.key === 'End') {
+                currentSlide = totalSlides;
+                showSlide(currentSlide);
+            }
+        });
+
+        // Initialize
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

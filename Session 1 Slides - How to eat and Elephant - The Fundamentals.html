@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Eat an Elephant... One Atomic Habit at a Time</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            display: none;
+            width: 95%;
+            max-width: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 4.5em;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 3.2em;
+            margin-bottom: 30px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 2.4em;
+            margin-bottom: 20px;
+            color: #f0f0f0;
+            font-weight: 500;
+        }
+
+        p, li {
+            font-size: 1.8em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #f5f5f5;
+        }
+
+        .subtitle {
+            font-size: 2.1em;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        ul {
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 2.1em;
+            color: #ffd700;
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 4px solid #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            text-align: left;
+            align-items: center;
+        }
+
+        .big-number {
+            font-size: 10em;
+            font-weight: bold;
+            color: #ffd700;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .formula {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #ffd700;
+            font-size: 2.4em;
+            font-weight: bold;
+            margin: 30px 0;
+        }
+
+        .elephant-emoji {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .brain-slide .two-column {
+            text-align: center;
+        }
+
+        .brain-percentage {
+            font-size: 7.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .brain-80 {
+            color: #ffd700;
+        }
+
+        .brain-20 {
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 3.2em;
+            }
+            
+            h2 {
+                font-size: 2.6em;
+            }
+            
+            h3 {
+                font-size: 1.9em;
+            }
+            
+            p, li {
+                font-size: 1.5em;
+            }
+            
+            .subtitle {
+                font-size: 1.7em;
+            }
+            
+            .quote {
+                font-size: 1.7em;
+            }
+            
+            .formula {
+                font-size: 1.9em;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .big-number {
+                font-size: 5.5em;
+            }
+
+            .brain-percentage {
+                font-size: 5.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <span class="elephant-emoji">🐘</span>
+            <h1>How to Eat an Elephant...</h1>
+            <h2>One Atomic Habit at a Time</h2>
+            <p class="subtitle">Small Changes, Remarkable Results</p>
+            <p class="subtitle">Session 1 of 5</p>
+        </div>
+
+        <!-- Slide 2: Your Brain's Hidden Agenda -->
+        <div class="slide brain-slide">
+            <h2>Your Brain's Hidden Agenda</h2>
+            <div class="two-column">
+                <div>
+                    <div class="brain-percentage brain-80">80%</div>
+                    <h3>Body Budgeting</h3>
+                    <p>Heart rate, breathing, blood sugar, inflammation, unconscious processes</p>
+                </div>
+                <div>
+                    <div class="brain-percentage brain-20">20%</div>
+                    <h3>Consciousness</h3>
+                    <p>Attention, awareness, "you"</p>
+                </div>
+            </div>
+            <div class="quote" style="margin-top: 40px;">
+                "We are the habits we keep. We become the things we focus on."
+            </div>
+            <ul style="margin-top: 30px;">
+                <li>Your brain wants you <span class="highlight">non-conscious</span> to conserve energy</li>
+                <li>Attention + Habits = Your <span class="highlight">agency</span></li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: Opening Hook -->
+        <div class="slide">
+            <div class="big-number">1%</div>
+            <h2>Better Every Day</h2>
+            <p>If you get <span class="highlight">1% better</span> each day for one year...</p>
+            <p>You'll end up <span class="highlight">37 times better</span> by the end of the year!</p>
+            <div class="formula">1.01³⁶⁵ = 37.78</div>
+        </div>
+
+        <!-- Slide 4: What Are Atomic Habits? -->
+        <div class="slide">
+            <h2>What Are Atomic Habits?</h2>
+            <div class="two-column">
+                <div>
+                    <h3>Atomic = Small</h3>
+                    <ul>
+                        <li>Tiny changes</li>
+                        <li>Marginal gains</li>
+                        <li>1% improvements</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Habits = Compound</h3>
+                    <ul>
+                        <li>Regular practices</li>
+                        <li>Automatic behaviors</li>
+                        <li>System-based results</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Why Small Changes Matter -->
+        <div class="slide">
+            <h2>Why Small Changes Matter</h2>
+            <ul>
+                <li><span class="highlight">Easy to start:</span> Lower resistance to change</li>
+                <li><span class="highlight">Sustainable:</span> Less likely to burn out</li>
+                <li><span class="highlight">Compound effect:</span> Small gains multiply over time</li>
+                <li><span class="highlight">Identity shift:</span> "I am the type of person who..."</li>
+            </ul>
+            <div class="quote">
+                "Every action you take is a vote for the type of person you wish to become."
+            </div>
+        </div>
+
+        <!-- Slide 6: The Problem with Goals -->
+        <div class="slide">
+            <h2>Goals vs. Systems</h2>
+            <div class="two-column">
+                <div>
+                    <h3>❌ Goals Focus</h3>
+                    <ul>
+                        <li>Outcome-based</li>
+                        <li>Temporary motivation</li>
+                        <li>All-or-nothing mindset</li>
+                        <li>Restrict happiness</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>✅ Systems Focus</h3>
+                    <ul>
+                        <li>Process-based</li>
+                        <li>Continuous improvement</li>
+                        <li>Progress-oriented</li>
+                        <li>Immediate satisfaction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: The Plateau of Latent Potential -->
+        <div class="slide">
+            <h2>The Valley of Disappointment</h2>
+            <p>Most people give up in the <span class="highlight">"Valley of Disappointment"</span></p>
+            <ul>
+                <li>Habits feel like they're not working</li>
+                <li>Results lag behind effort</li>
+                <li>Breakthrough comes after persistence</li>
+                <li>Like an ice cube melting: 26°, 27°, 28°, 29°, 30°, 31°... 32° = breakthrough!</li>
+            </ul>
+        </div>
+
+        <!-- Slide 8: Identity-Based Habits -->
+        <div class="slide">
+            <h2>Identity-Based Habits</h2>
+            <h3>Three Levels of Change:</h3>
+            <ul>
+                <li><span class="highlight">Outcome:</span> What you want to achieve</li>
+                <li><span class="highlight">Process:</span> What you do (habits & systems)</li>
+                <li><span class="highlight">Identity:</span> What you believe (who you are)</li>
+            </ul>
+            <div class="quote">
+                Start with identity: "I am a healthy person" → "What would a healthy person do?"
+            </div>
+        </div>
+
+        <!-- Slide 9: Key Takeaways -->
+        <div class="slide">
+            <h2>Key Takeaways</h2>
+            <ul>
+                <li>Start with <span class="highlight">identity</span>: "Who do I want to become?"</li>
+                <li>Focus on <span class="highlight">1% improvements</span> daily</li>
+                <li>Build <span class="highlight">systems</span>, not just goals</li>
+                <li>Persist through the <span class="highlight">valley of disappointment</span></li>
+                <li>Every small action is a <span class="highlight">vote</span> for your future self</li>
+            </ul>
+        </div>
+
+        <!-- Slide 10: Next Session Preview -->
+        <div class="slide">
+            <h2>Next Session Preview</h2>
+            <h3>Session 2-5: The Four Laws of Behavior Change</h3>
+            <ul>
+                <li>Make it Obvious</li>
+                <li>Make it Attractive</li>
+                <li>Make it Easy</li>
+                <li>Make it Satisfying</li>
+            </ul>
+            <p class="subtitle">The practical framework for building any habit</p>
+        </div>
+
+        <!-- Slide 11: Thank You -->
+        <div class="slide">
+            <span class="elephant-emoji">🐘</span>
+            <h1>Thank You!</h1>
+            <div class="quote">
+                "You do not rise to the level of your goals. You fall to the level of your systems."
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" onclick="changeSlide(-1)" id="prevBtn">Previous</button>
+        <button class="nav-btn" onclick="changeSlide(1)" id="nextBtn">Next</button>
+    </div>
+
+    <div class="slide-counter">
+        <span id="slideNumber">1</span> / <span id="totalSlides">11</span>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = document.querySelectorAll('.slide').length;
+        
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide - 1].classList.add('active');
+            
+            document.getElementById('slideNumber').textContent = currentSlide;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+        }
+
+        function changeSlide(n) {
+            currentSlide += n;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'Home') {
+                currentSlide = 1;
+                showSlide(currentSlide);
+            }
+            if (e.key === 'End') {
+                currentSlide = totalSlides;
+                showSlide(currentSlides);
+            }
+        });
+
+        // Initialize
+        showSlide(currentSlide);
+
+        // Auto-advance option (uncomment to enable)
+        // setInterval(() => {
+        //     if (currentSlide < totalSlides) {
+        //         changeSlide(1);
+        //     }
+        // }, 30000); // Advance every 30 seconds
+    </script>
+</body>
+</html>
