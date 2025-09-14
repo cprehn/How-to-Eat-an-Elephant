@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atomic Habits Presentations - How to Eat an Elephant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .elephant-emoji {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 2.1em;
+            color: #e0e0e0;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+
+        .description {
+            font-size: 1.6em;
+            color: #f5f5f5;
+            margin-bottom: 50px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .buttons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .presentation-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .presentation-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffd700;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .card-description {
+            font-size: 1.3em;
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
+
+        .session-number {
+            background: #ffd700;
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .style-guide-card {
+            border-color: rgba(81, 207, 102, 0.5);
+        }
+
+        .style-guide-card:hover {
+            border-color: #51cf66;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            color: #c0c0c0;
+            font-size: 1.2em;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.8em;
+            color: #ffd700;
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 4px solid #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 0 10px 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 3.2em;
+            }
+            
+            .subtitle {
+                font-size: 1.7em;
+            }
+            
+            .description {
+                font-size: 1.4em;
+            }
+            
+            .buttons-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .card-title {
+                font-size: 1.6em;
+            }
+            
+            .card-description {
+                font-size: 1.2em;
+            }
+            
+            .quote {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="elephant-emoji">🐘</span>
+        <h1>How to Eat an Elephant</h1>
+        <p class="subtitle">One Atomic Habit at a Time</p>
+        <p class="description">
+            Welcome to the Atomic Habits presentation series. Each session builds on the previous one, 
+            guiding you through the practical framework for building better habits and breaking bad ones.
+        </p>
+
+        <div class="buttons-container">
+            <a href="Session 1 Slides - How to eat and Elephant - The Fundamentals.html" class="presentation-card">
+                <span class="session-number">Session 1</span>
+                <span class="card-icon">🧠</span>
+                <div class="card-title">The Fundamentals</div>
+                <div class="card-description">
+                    Understanding your brain's hidden agenda, the power of 1% improvements, 
+                    and why small changes create remarkable results.
+                </div>
+            </a>
+
+            <a href="Session 2 Slides - How to eat and Elephant - The 1st Law - Make it Obvious.html" class="presentation-card">
+                <span class="session-number">Session 2</span>
+                <span class="card-icon">👀</span>
+                <div class="card-title">1st Law: Make it Obvious</div>
+                <div class="card-description">
+                    Learn to see your habits clearly through habit scorecards, stacking, 
+                    and environmental design strategies.
+                </div>
+            </a>
+
+            <a href="Style Guide - Atomic Habits Presentation.html" class="presentation-card style-guide-card">
+                <span class="card-icon">🎨</span>
+                <div class="card-title">Style Guide</div>
+                <div class="card-description">
+                    Design system reference including colors, typography, components, 
+                    and usage guidelines for the presentation series.
+                </div>
+            </a>
+        </div>
+
+        <div class="quote">
+            "We are what we repeatedly do. Excellence, then, is not an act, but a habit." - Aristotle
+        </div>
+
+        <div class="footer">
+            <p>Navigate through each session to build your atomic habits toolkit</p>
+            <p style="margin-top: 10px; font-size: 1em; color: #a0a0a0;">
+                Use keyboard arrows or navigation buttons within each presentation
+            </p>
+        </div>
+    </div>
+</body>
+</html>
